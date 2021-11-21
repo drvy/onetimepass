@@ -1,8 +1,8 @@
 module.exports = {
-    "devUrl"  : "http://cli-file-uploader.loc",
+    "devUrl"  : "http://onetimepass.loc",
     "imgPath" : "./src/img",
     "jsPath"  : "./src/js",
-    "sassPath": "./src/sass",
+    "sassPath": "./src/scss",
     "destPath": "./dist",
     "vendor"  : {
         "sass" : [],
