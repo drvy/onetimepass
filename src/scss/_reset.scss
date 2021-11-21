@@ -1,0 +1,75 @@
+// https://piccalil.li/blog/a-modern-css-reset/
+// sass-lint:disable no-misspelled-properties
+
+* {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+ul,
+ol {
+  &[role='list'] {
+    list-style: none;
+  }
+}
+
+html {
+  &:focus-within {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  line-height: 1.5;
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+}
+
+a {
+  &:not([class]) {
+    text-decoration-skip-ink: auto;
+  }
+}
+
+img,
+picture {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    &:focus-within {
+      scroll-behavior: auto;
+    }
+  }
+
+  * {
+    &::before,
+    &::after {
+      animation-duration: .01ms;
+      animation-iteration-count: 1;
+      scroll-behavior: auto;
+      transition-duration: .01ms;
+    }
+  }
+}
