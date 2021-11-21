@@ -16,7 +16,6 @@ var sassLintHandler = (err) => {
         title: 'SCSS Linter failed!',
         message: '<%= error.message %>',
     })(err);
-    this.emit('end');
 };
 
 gulp.task('build:sass', () => {
