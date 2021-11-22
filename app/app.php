@@ -5,12 +5,14 @@ use Psr\Container\ContainerInterface;
 use Slim\Views\Twig;
 use Slim\Factory\AppFactory;
 use Slim\Views\TwigExtension;
-use Twig\Extension\DebugExtension;
 use Slim\Psr7\Factory\UriFactory;
-use App\Utilities\Language;
 use Slim\Csrf\Guard;
-use App\Extensions\CsrfExtension;
+use Twig\Extension\DebugExtension;
 use DI\Container;
+use Illuminate\Database\Capsule\Manager as Capsule;
+use App\Utilities\Env;
+use App\Utilities\Language;
+use App\Extensions\CsrfExtension;
 
 // Session
 session_start();
@@ -19,7 +21,7 @@ session_start();
 (Dotenv::createImmutable(ABSPATH))->safeLoad();
 
 
-$container = new DI\Container();
+$container = new Container();
 AppFactory::setContainer($container);
 $app = AppFactory::create();
 $app->addErrorMiddleware(true, true, true);
@@ -27,12 +29,12 @@ $app->addErrorMiddleware(true, true, true);
 
 // Settings
 $container->set('settings', function () use ($container) {
-    return [
-        'app' => [
-            'name'         => $_ENV['APP_NAME'],
-            'langDefault'  => $_ENV['APP_LANG_DEFAULT']
-        ]
-    ];
+    return array(
+        'app' => array(
+            'name'         => Env::get('APP_NAME'),
+            'langDefault'  => Env::get('APP_LANG_DEFAULT')
+        )
+    );
 });
 
 
@@ -47,9 +49,9 @@ $container->set('view', function (ContainerInterface $container) use ($app) {
     $lang  = $container->get('language');
     $views = sprintf('%s/app/Views/%s/', ABSPATH, $lang);
 
-    $twig = Twig::create($views, [
+    $twig = Twig::create($views, array(
         'cache' => false
-    ]);
+    ));
 
     $twig->addExtension(new DebugExtension());
 
@@ -70,5 +72,22 @@ $container->set('csrf', function () use ($app) {
     return new Guard($app->getResponseFactory());
 });
 $app->add('csrf');
+
+
+// Database
+$capsule = new Capsule();
+$capsule->addConnection(array(
+    'driver'    => Env::get('APP_DATABASE_DRIVER'),
+    'host'      => Env::get('APP_DATABASE_HOST'),
+    'database'  => Env::get('APP_DATABASE_NAME'),
+    'username'  => Env::get('APP_DATABASE_USER'),
+    'password'  => Env::get('APP_DATABASE_PASS'),
+    'charset'   => Env::get('APP_DATABASE_CHARSET'),
+    'collation' => Env::get('APP_DATABASE_COLLATION'),
+    'prefix'    => Env::get('APP_DATABASE_PREFIX'),
+));
+
+$capsule->setAsGlobal();
+$capsule->bootEloquent();
 
 require_once __DIR__ . '/routes.php';
