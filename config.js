@@ -1,9 +1,9 @@
 module.exports = {
     "devUrl"  : "http://onetimepass.loc",
-    "imgPath" : "./src/img",
-    "jsPath"  : "./src/js",
-    "sassPath": "./src/scss",
-    "destPath": "./dist",
+    "imgPath" : "./assets/img",
+    "jsPath"  : "./assets/js",
+    "sassPath": "./assets/scss",
+    "destPath": "./public/dist",
     "vendor"  : {
         "sass" : [],
         "css"  : [],
