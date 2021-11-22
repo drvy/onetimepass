@@ -1,12 +1,16 @@
 <?php
 
 use Dotenv\Dotenv;
+use Psr\Container\ContainerInterface;
 use Slim\Views\Twig;
 use Slim\Factory\AppFactory;
 use Slim\Views\TwigExtension;
 use Twig\Extension\DebugExtension;
 use Slim\Psr7\Factory\UriFactory;
 use App\Utilities\Language;
+use Slim\Csrf\Guard;
+use App\Extensions\CsrfExtension;
+use DI\Container;
 
 // Session
 session_start();
@@ -39,7 +43,7 @@ $container->set('language', function () use ($container) {
 
 
 // Twig
-$container->set('view', function ($container) use ($app) {
+$container->set('view', function (ContainerInterface $container) use ($app) {
     $lang  = $container->get('language');
     $views = sprintf('%s/app/Views/%s/', ABSPATH, $lang);
 
@@ -55,8 +59,16 @@ $container->set('view', function ($container) use ($app) {
         '/'
     ));
 
+     $twig->addExtension(new CsrfExtension($container->get('csrf')));
+
     return $twig;
 });
 
+
+// Anti-csrf
+$container->set('csrf', function () use ($app) {
+    return new Guard($app->getResponseFactory());
+});
+$app->add('csrf');
 
 require_once __DIR__ . '/routes.php';
