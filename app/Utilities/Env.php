@@ -4,7 +4,15 @@ namespace App\Utilities;
 
 class Env
 {
-    public static function get($name, $default = null)
+    /**
+     * Search for an environment variable with $_ENV and getenv.
+     * Return default if not found.
+     *
+     * @param string $name
+     * @param mixed $default
+     * @return mixed
+     */
+    public static function get(string $name, $default = null)
     {
         if (isset($_ENV[$name])) {
             return $_ENV[$name];
