@@ -18,7 +18,7 @@ class HomeController extends Controller
      */
     public function index(Request $request, Response $response, array $args = array())
     {
-        return $this->render($response, 'index.twig', [
+        return $this->render($response, 'generator.twig', [
             'appName' => $this->container->get('settings')['app']['name']
         ]);
     }
