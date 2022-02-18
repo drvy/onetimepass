@@ -28,11 +28,6 @@ h2 {
   font-size: 1.2em;
 }
 
-.header {
-  padding: 20px;
-}
-
-
 .wrap {
   margin: 0 auto;
   max-width: 700px;
@@ -53,100 +48,6 @@ h2 {
   }
 }
 
-
-.box {
-  border-radius: 4px;
-  box-shadow: $shadow 0 10px 36px 0, $shadow 0 0 0 1px;
-  margin-top: 30px;
-  padding: 20px;
-  position: relative;
-  width: 100%;
-
-  p {
-    margin-bottom: 10px;
-  }
-}
-
-textarea,
-input {
-  background: $background;
-  border: 1px solid $color-primary;
-  border-radius: 5px;
-  color: $color;
+.display--block {
   display: block;
-  font-family: $font-mono;
-  font-size: 1em;
-  margin-bottom: 10px;
-  padding: 5px;
-  width: 100%;
-
-  &:focus {
-    border-color: $color-primary--active;
-    outline: 1px solid $color-primary--active;
-  }
-}
-
-textarea {
-  display: block;
-  min-height: 150px;
-  resize: vertical;
-  width: 100%;
-}
-
-button {
-  background-color: $btn-background;
-  border: 1px solid $btn-background;
-  border-radius: 4px;
-  color: $btn-color;
-  font-size: 1em;
-  font-weight: 700;
-  padding: 5px;
-  transition: background-color .2s ease;
-
-  &.full {
-    display: block;
-    width: 100%;
-  }
-
-  &:hover {
-    background-color: $btn-background--hover;
-    border-color: $btn-background--hover;
-    color: $btn-color--hover;
-    cursor: pointer;
-  }
-
-  &:active {
-    background-color: $btn-background--active;
-    border-color: $btn-background--active;
-    color: $btn-color--active;
-    cursor: pointer;
-  }
-
-  &:disabled {
-    background-color: $btn-background--disabled;
-    border-color: $btn-background--disabled;
-    color: $btn-color--disabled;
-    cursor: not-allowed;
-  }
-}
-
-
-
-.section--decrypt {
-  .result {
-    background-color: $shadow;
-    border-radius: 4px;
-    margin-top: 20px;
-    padding: 5px 10px 10px;
-
-    textarea {
-      margin-bottom: 0;
-    }
-
-    label {
-      display: block;
-      font-weight: 700;
-      margin-bottom: 5px;
-    }
-  }
 }
