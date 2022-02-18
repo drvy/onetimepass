@@ -50,10 +50,6 @@ gulp.task('build:javascript', () => {
         config.jsPath + '/_*.js',
         config.jsPath + '/*.js',
     ])
-    .pipe(plugins.concat('cfu.js'))
-    .pipe(gulp.dest(config.destPath + '/js'))
-    .pipe(plugins.rename('cfu.min.js'))
-    .pipe(plugins.uglify({mangle: {toplevel: true}}))
     .pipe(gulp.dest(config.destPath + '/js'));
 });
 
