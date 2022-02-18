@@ -13,6 +13,7 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 use App\Utilities\Env;
 use App\Utilities\Language;
 use App\Extensions\CsrfExtension;
+use App\Extensions\ClientVariablesExtension;
 
 // Session
 session_start();
@@ -34,6 +35,16 @@ $container->set('settings', function () use ($container) {
             'name'         => Env::get('APP_NAME'),
             'langDefault'  => Env::get('APP_LANG_DEFAULT')
         )
+    );
+});
+
+
+// Javascript client settings
+$container->set('clientVariables', function () use ($container) {
+    return array(
+        'salt'      => Env::get('APP_TOKEN_CLIENT_SALT'),
+        'rotations' => (int) Env::get('APP_TOKEN_CLIENT_ROTATIONS'),
+        'keySize'   => (int) Env::get('APP_TOKEN_CLIENT_KEYSIZE')
     );
 });
 
@@ -62,6 +73,7 @@ $container->set('view', function (ContainerInterface $container) use ($app) {
     ));
 
     $twig->addExtension(new CsrfExtension($container->get('csrf')));
+    $twig->addExtension(new ClientVariablesExtension($container));
     return $twig;
 });
 
