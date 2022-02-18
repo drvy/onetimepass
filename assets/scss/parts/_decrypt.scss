@@ -1,0 +1,18 @@
+.section--decrypt {
+  .result {
+    background-color: $shadow;
+    border-radius: 4px;
+    margin-top: 20px;
+    padding: 5px 10px 10px;
+
+    textarea {
+      margin-bottom: 0;
+    }
+
+    label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+  }
+}

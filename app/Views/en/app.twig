@@ -11,7 +11,7 @@
         <meta name="keywords" content="password,secret,share,onetimepass,onetime">
 
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
-        <link rel="stylesheet" href="dist/css/otp.css">
+        <link rel="stylesheet" href="/dist/css/otp.css">
     </head>
     <body>
         <div class="wrap">
@@ -23,16 +23,10 @@
         </div>
     </body>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
-    <script>
-        var salt = CryptoJS.lib.WordArray.random(128 / 8);
-
-        var key = CryptoJS.PBKDF2('Test', salt, {
-            keySize: 256 / 32,
-            iterations: 1000
-        });
-
-        console.log(salt.toString());
-        console.log(key.toString());
-    </script>
+    {{ clientVariablesScript() | raw }}
+    <script src="/dist/js/crypto-js.min.js"></script>
+    <script src="/dist/js/requests.js"></script>
+    <script src="/dist/js/token.js"></script>
+    <script src="/dist/js/message.js"></script>
+    <script src="/dist/js/events.js"></script>
 </html>
