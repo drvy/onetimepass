@@ -11,18 +11,10 @@ var plugins     = require('gulp-load-plugins')({
     }
 });
 
-var sassLintHandler = (err) => {
-    plugins.notify.onError({
-        title: 'SCSS Linter failed!',
-        message: '<%= error.message %>',
-    })(err);
-};
-
 gulp.task('build:sass', () => {
     return gulp.src(config.sassPath + '/**/*.scss')
         .pipe(plugins.sassLint({config: '.sass-lint.yml'}))
         .pipe(plugins.sassLint.format())
-        .pipe(plugins.plumber({errorHandler: sassLintHandler}))
         .pipe(plugins.sassLint.failOnError())
         .pipe(plugins.plumber.stop())
         .pipe(plugins.sass({
@@ -32,9 +24,7 @@ gulp.task('build:sass', () => {
                 config.sassPath,
             ],
             errLogToConsole: true
-        }).on('error', plugins.notify.onError(error => {
-            return `Error: ${error.message}`;
-        })))
+        }))
         .pipe(plugins.autoprefixer('last 5 version'))
         .pipe(gulp.dest(config.destPath + '/css'))
         .pipe(browserSync.stream());
