@@ -37,11 +37,12 @@ class ClientVariablesExtension extends AbstractExtension implements GlobalsInter
     public function clientVariablesScript(): string
     {
         $payload = json_encode($this->container->get('clientVariables'));
+        $script  = sprintf('var clientSettings = JSON.parse(\'%s\');', $payload);
+        $hash    = 'sha384-' . base64_encode(hash('sha384', $script, true));
 
-        return sprintf(
-            '<script>var clientSettings = JSON.parse(\'%s\');</script>',
-            $payload
-        );
+        return sprintf('<script integrity="%s">
+            %s
+        </script>', $hash, $script);
     }
 
 
