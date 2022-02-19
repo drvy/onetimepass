@@ -23,5 +23,8 @@
         "gulp-sass": "^5.0.0",
         "gulp-sass-lint": "^1.4.0",
         "sass": "^1.49.8"
+    },
+    "dependencies": {
+        "crypto-js": "^4.1.1"
     }
 }
