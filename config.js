@@ -7,7 +7,9 @@ module.exports = {
     "vendor"  : {
         "sass" : [],
         "css"  : [],
-        "js"   : [],
+        "js"   : [
+            "./node_modules/crypto-js/crypto-js.js"
+        ],
         'fonts': []
     },
 };
