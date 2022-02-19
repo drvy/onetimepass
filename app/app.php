@@ -65,13 +65,6 @@ $container->set('view', function (ContainerInterface $container) use ($app) {
     ));
 
     $twig->addExtension(new DebugExtension());
-
-    $twig->addExtension(new TwigExtension(
-        $app->getRouteCollector()->getRouteParser(),
-        (new UriFactory())->createFromGlobals($_SERVER),
-        '/'
-    ));
-
     $twig->addExtension(new CsrfExtension($container->get('csrf')));
     $twig->addExtension(new ClientVariablesExtension($container));
     return $twig;
