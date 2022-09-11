@@ -27,7 +27,7 @@ class MessageController extends Controller
             $args = $request->getParsedBody();
 
             if (empty($args['secret']) || empty($args['token'])) {
-                throw new Exception('Missing secret and or token', 400);
+                throw new Exception('Missing secret and/or token', 400);
             }
 
             if (!Validation::validateToken($args['token'])) {

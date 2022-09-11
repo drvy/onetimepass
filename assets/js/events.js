@@ -12,7 +12,7 @@ generateBtn.addEventListener('click', function (event) {
         let secret  = new OTCMessage(message, passphrase).encrypt();
         let token   = new OTCToken(passphrase).get();
 
-        let request = new OTCRequest().post('/rest/message/', {secret: secret, token: token}, function (status, response) {
+        let request = new OTCRequest().post('/rest/message', {secret: secret, token: token}, function (status, response) {
             console.log(status, response);
         });
 

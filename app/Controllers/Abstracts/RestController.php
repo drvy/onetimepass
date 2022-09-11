@@ -42,7 +42,7 @@ abstract class RestController
     protected function returnError(int $status = 500, string $message = ''): Response
     {
         $payload = array(
-            'success'   => true,
+            'success'   => false,
             'errorCode' => $status,
             'errorMsg'  => $message
         );
