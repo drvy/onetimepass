@@ -6,6 +6,7 @@ use Slim\Factory\AppFactory;
 use Slim\Views\TwigExtension;
 use Twig\Extension\DebugExtension;
 use Slim\Psr7\Factory\UriFactory;
+use App\Utilities\Language;
 
 // Session
 session_start();
@@ -24,15 +25,25 @@ $app->addErrorMiddleware(true, true, true);
 $container->set('settings', function () use ($container) {
     return [
         'app' => [
-            'name' => $_ENV['APP_NAME']
+            'name'         => $_ENV['APP_NAME'],
+            'langDefault'  => $_ENV['APP_LANG_DEFAULT']
         ]
     ];
 });
 
 
+// Auto language setup
+$container->set('language', function () use ($container) {
+    return Language::getLanguage($container->get('settings')['langDefault']);
+});
+
+
 // Twig
 $container->set('view', function ($container) use ($app) {
-    $twig = Twig::create(ABSPATH . '/app/Views', [
+    $lang  = $container->get('language');
+    $views = sprintf('%s/app/Views/%s/', ABSPATH, $lang);
+
+    $twig = Twig::create($views, [
         'cache' => false
     ]);
 
