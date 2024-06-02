@@ -2,55 +2,90 @@
 
 namespace App\Utilities;
 
-use Exception;
-use Throwable;
-
 class Validation
 {
+    public static array $lengths = array(
+        'int'             => 11,
+        'string'          => 255,
+        'email'           => 320,
+    );
+
     /**
+     * Filters and sanitizes an email address
      *
-     * @param string $secret
-     * @return bool
+     * @param string $email
+     * @param int $size
+     * @return string
      */
-    public static function validateSecret(string $secret): bool
+    public static function filterEmail(string $email, int $size = 0): string
     {
-        try {
-            $object = json_decode($secret, true, 2, JSON_THROW_ON_ERROR);
+        $size  = ($size > 0 ? $size : self::$lengths['email']);
+        $email = filter_var(trim(mb_substr($email, 0, $size)), FILTER_SANITIZE_EMAIL);
 
-            if (!is_array($object) || count($object) !== 3) {
-                throw new Exception('Secret does not have a valid format', 400);
-            }
+        return (empty($email) || !is_string($email) ? '' : $email);
+    }
 
-            if (empty($object['ct']) || empty($object['iv']) || empty($object['s'])) {
-                throw new Exception('Secret is missing ct, iv or s', 400);
-            }
-
-            if (!ctype_xdigit($object['iv']) || !ctype_xdigit($object['s'])) {
-                throw new Exception('S or iv do not have a valid format', 400);
-            }
-
-            return true;
-        } catch (Throwable $error) {
-           return false;
-        }
+    /**
+     * Filters a string
+     *
+     * @param string $string
+     * @param int $size
+     * @return string
+     */
+    public static function filterString(string $string, int $size = 0): string
+    {
+        $size = ($size > 0 ? $size : self::$lengths['name']);
+        return htmlspecialchars(trim(mb_substr($string, 0, $size)), ENT_QUOTES, 'UTF-8');
     }
 
 
     /**
+     * Escape a string
      *
-     * @param string $token
+     * @param string $string
+     * @return string
+     */
+    public static function escString(string $string): string
+    {
+        return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
+    }
+
+
+    /**
+     * Filters and sanitizes an integer
+     *
+     * @param mixed $int
+     * @param int $size
+     * @return int
+     */
+    public static function filterInt($int, int $size = 0): int
+    {
+        $size = ($size > 0 ? $size : self::$lengths['int']);
+        $int = trim(mb_substr($int, 0, $size));
+        return intval($int);
+    }
+
+
+    /**
+     * Validates an email address
+     *
+     * @param string $email
      * @return bool
      */
-    public static function validateToken(string $token): bool
+    public static function validateEmail(string $email): bool
     {
-        try {
-            if (empty($token) || !ctype_xdigit($token)) {
-                throw new Exception('Token is empty or does not have a valid format', 400);
-            }
+        return filter_var($email, FILTER_VALIDATE_EMAIL);
+    }
 
-            return true;
-        } catch (Throwable $error) {
-            return false;
-        }
+
+    /**
+     * Validates an string with a UUID V4 format
+     *
+     * @param string $uuid
+     * @return bool
+     */
+    public static function validateUUIDV4(string $uuid): bool
+    {
+        return (bool) preg_match('/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i', $uuid);
     }
 }
