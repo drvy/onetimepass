@@ -11,6 +11,7 @@ class CsrfExtension extends AbstractExtension implements GlobalsInterface
 {
     protected Guard $csrf;
 
+
     public function __construct(Guard $csrf)
     {
         $this->csrf = $csrf;

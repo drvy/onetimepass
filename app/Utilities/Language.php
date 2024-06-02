@@ -2,13 +2,12 @@
 
 namespace App\Utilities;
 
+use Exception;
 use DirectoryIterator;
 use Negotiation\LanguageNegotiator;
-use Exception;
 
 class Language
 {
-
     /**
      * Retrieve the header for language acceptance
      *
