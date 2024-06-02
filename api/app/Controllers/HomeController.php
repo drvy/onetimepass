@@ -18,6 +18,7 @@ class HomeController extends Controller
     public function index(Request $request, Response $response): Response
     {
         unset($request);
+        return $this->output($response, 'app', 200);
         return $this->return($response, ['response' => 'Hello world'], 200);
     }
 }

@@ -28,6 +28,19 @@ abstract class Controller
     }
 
 
+    public function output(Response $response, string $template = 'app', int $status = 200): Response
+    {
+        $path = sprintf('%s/app/Views/public/%s.html', ABSPATH, $template);
+
+        if (!file_exists($path)) {
+            return $this->returnError(404, 'template_not_found', 'Template not found');
+        }
+
+        $response->getBody()->write(file_get_contents($path));
+        return $response->withStatus($status);
+    }
+
+
     /**
      * Returns a json response
      *

@@ -18,7 +18,7 @@ AppContainer::getInstance()->set($app);
 
 // App settings
 $container->set('settings', (new Settings())); // loads settings and env
-$app->setBasePath($container->get('settings')->get('basepath', null));
+$app->setBasePath($container->get('settings')->get('basepath', ''));
 $app->addBodyParsingMiddleware();
 $app->addErrorMiddleware(true, true, true);
 
