@@ -38,15 +38,15 @@ $container->set('settings', function () use ($container) {
 });
 
 
-// Auto language setup
-$container->set('language', function () use ($container) {
+// Detect and set language automatically.
+$container->set('lang', function () use ($container) {
     return Language::getLanguage($container->get('settings')['langDefault']);
 });
 
 
 // Twig
 $container->set('view', function (ContainerInterface $container) use ($app) {
-    $lang  = $container->get('language');
+    $lang  = $container->get('lang');
     $views = sprintf('%s/app/Views/%s/', ABSPATH, $lang);
 
     $twig = Twig::create($views, array(
@@ -61,8 +61,7 @@ $container->set('view', function (ContainerInterface $container) use ($app) {
         '/'
     ));
 
-     $twig->addExtension(new CsrfExtension($container->get('csrf')));
-
+    $twig->addExtension(new CsrfExtension($container->get('csrf')));
     return $twig;
 });
 
