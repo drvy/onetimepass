@@ -1,0 +1,18 @@
+{% extends "base/app.twig" %}
+{% block content %}
+<section class="box section section--decrypt">
+    <p><strong>{{ __('WARNING') }}:</strong> {{ __('Once opened, this message will be deleted from our servers and this link will become innacessible.') }}</p>
+
+    <p class="legal">{{ __('The content of this message is confidential and intended for a recipient from a legiptimate communitacion. It is strictly forbidden to share any part of this message with any third party, without consent from the sender. If you received this link/url by mistake, please close this page and do not share the link.') }}</p>
+
+    <form action="" method="POST">
+        <input type="text" placeholder="{{ __('Passphrase') }}">
+        <button class="full">🔓 {{ __('Open') }}</button>
+    </form>
+
+    <aside class="result">
+        <label>{{ __('Message') }}:</label>
+        <textarea>Hello world</textarea>
+    </aside>
+</section>
+{% endblock %}

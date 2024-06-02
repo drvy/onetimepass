@@ -11,6 +11,7 @@ $app->get('/', HomeController::class . ':index');
 $app->redirect('/p/', '/', 301);
 $app->get('/p/{uuid}[/{pwd}]', ViewController::class . ':index');
 
+
 /**
  * REST API routes
  */

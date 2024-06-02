@@ -1,0 +1,52 @@
+{% extends "base/app.twig" %}
+{% block content %}
+<section class="box section section--generator">
+    <form action="" method="POST">
+        <p>{{ __('Paste a password or another senstive information and we will generate a onetime link for you to share securely. Encryption and decryption happens in the browser, we never store plain-text information. The information will be stored for up to 7 days.') }}</p>
+
+        <textarea id="message" name="message" placeholder="{{ __('Sensitive information...') }}"></textarea>
+
+        <div class="files">
+            <button class="file--button display" type="button" id="addFiles">📃 {{ __('Add files') }}</button>
+            <input class="file--field" type="file" id="files" name="files" placeholder="{{ __('Sensitive files...') }}" multiple>
+        </div>
+
+        <p>{{ __('Leaving the secret phrase field empty will cause a random secret phrase generation which will be included in the generated link.') }}</p>
+
+        <input id="passphrase" name="passphrase" type="text" placeholder="{{ __('Secret phrase') }}">
+        <button id="generate" name="generate" class="full">🔗 {{ __('Generate') }}</button>
+    </form>
+</section>
+
+<section class="box section section--result">
+    <p>{{ __('Your sensitive information has been saved. You can share the following link and once it is opened it will be deleted.') }}</p>
+
+    <input type="text" placeholder="https://....">
+
+    <div class="side-right">
+        <button>📋 {{ __('Copy') }}</button>
+        <button>🗑️ {{ __('Delete') }}</button>
+    </div>
+
+    <h2>{{ __('F.A.Q.') }}</h2>
+    <ul>
+        <li>
+            <strong>{{ __('Will the information be deleted by just visiting the link?') }}</strong>
+            <p>{{ __('No. The user needs to confirm that he wants to view the senstive information before it being retrieved and deleted from the server.') }}</p>
+        </li>
+        <li>
+            <strong>{{ __('For how long will this link be available?') }}</strong>
+            <p>{{ __('The link will be available for 7 days if unopened. Once the sensitive message has been opened, it will be instantly deleted.') }}</p>
+        </li>
+        <li>
+            <strong>{{ __('Can I delete it before the time limit?') }}</strong>
+            <p>{{ __('If you click the delete button now, it will be deleted instantly. If you leave this page, the only option to delete it will be to open the sensitive message by visiting the link.') }}</p>
+        </li>
+        <li>
+            <strong>{{ __('How is the information stored?') }}</strong>
+            <p>{{ __('The sensitive information is encrypted in your browser and stored as ilegible text in our server. In order to decypher it, the user must input the secret phrase. The decryption process is also done in the browser. We do not store the secret phrase.') }}</p>
+        </li>
+    </ul>
+
+</section>
+{% endblock %}

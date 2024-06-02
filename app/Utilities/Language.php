@@ -31,7 +31,7 @@ class Language
     public static function detectLanguages(): array
     {
         try {
-            $path      = ABSPATH . '/app/Views/';
+            $path      = ABSPATH . '/app/Language/';
             $dir       = new DirectoryIterator($path);
             $languages = array();
 
@@ -60,8 +60,12 @@ class Language
      */
     public static function prioritize($language, array $languages)
     {
-        if (empty($language) && in_array('en', $languages)) {
-            $language = 'en';
+        if (empty($language) && in_array('en_US', $languages)) {
+            $language = 'en_US';
+        }
+
+        if (!in_array($language, $languages)) {
+            $languages[] = $language;
         }
 
         usort($languages, function ($a, $b) use ($language) {

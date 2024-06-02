@@ -1,0 +1,150 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Secrets\n"
+"POT-Creation-Date: 2023-01-09 17:25+0100\n"
+"PO-Revision-Date: 2023-01-09 17:26+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.1.1\n"
+"X-Poedit-Basepath: ../../../Views\n"
+"X-Poedit-KeywordsList: __;__(\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: generator.twig:5
+msgid ""
+"Paste a password or another senstive information and we will generate a "
+"onetime link for you to share securely. Encryption and decryption happens in "
+"the browser, we never store plain-text information. The information will be "
+"stored for up to 7 days."
+msgstr ""
+"Pega una contraseña u otro tipo de información secreta y generaremos un "
+"enlace de un solo uso para poder compartirlo de forma segura. El contenido "
+"se cifra y descifra en el navegador, no guardamos texto plano. La "
+"información se guardara como máximo hasta 7 días."
+
+#: generator.twig:10
+msgid "Add files"
+msgstr "Añadir archivos"
+
+#: generator.twig:14
+msgid ""
+"Leaving the secret phrase field empty will cause a random secret phrase "
+"generation which will be included in the generated link."
+msgstr ""
+"Dejando el campo de contraseña en blanco causará que se genere una "
+"contraseña aleatoria que será incluida en el enlace generado."
+
+#: generator.twig:17
+msgid "Generate"
+msgstr "Generar"
+
+#: generator.twig:22
+msgid ""
+"Your sensitive information has been saved. You can share the following link "
+"and once it is opened it will be deleted."
+msgstr ""
+"La información sensible ha sido guardada. Puedes compartir el siguiente "
+"enlace y una vez sea abierto, será borrado."
+
+#: generator.twig:27
+msgid "Copy"
+msgstr "Copiar"
+
+#: generator.twig:28
+msgid "Delete"
+msgstr "Borrar"
+
+#: generator.twig:31
+msgid "F.A.Q."
+msgstr "Preguntas frecuentes."
+
+#: generator.twig:34
+msgid "Will the information be deleted by just visiting the link?"
+msgstr "¿La información se borra al visitar el enlace?"
+
+#: generator.twig:35
+msgid ""
+"No. The user needs to confirm that he wants to view the senstive information "
+"before it being retrieved and deleted from the server."
+msgstr ""
+"No. El usuario debe confirmar que desea ver la información sensible antes de "
+"que esta sea mostrada y borrada del servidor."
+
+#: generator.twig:38
+msgid "For how long will this link be available?"
+msgstr "¿Durante cuanto tiempo esta disponible el enlace?"
+
+#: generator.twig:39
+msgid ""
+"The link will be available for 7 days if unopened. Once the sensitive "
+"message has been opened, it will be instantly deleted."
+msgstr ""
+"La información se guarda durante 7 días si no es visualizada. Una vez se "
+"haya visualizado, será borrada al instante."
+
+#: generator.twig:42
+msgid "Can I delete it before the time limit?"
+msgstr "¿Puedo borrar el enlace antes del tiempo limite?"
+
+#: generator.twig:43
+msgid ""
+"If you click the delete button now, it will be deleted instantly. If you "
+"leave this page, the only option to delete it will be to open the sensitive "
+"message by visiting the link."
+msgstr ""
+"Puedes hacer click ahora sobre el botón de \"Borrar\" y será borrado al "
+"instante. Si abandonas esta página, la única opción para borrar el enlace "
+"seria visitarlo y ver la información."
+
+#: generator.twig:46
+msgid "How is the information stored?"
+msgstr "¿Como se guarda la información?"
+
+#: generator.twig:47
+msgid ""
+"The sensitive information is encrypted in your browser and stored as "
+"ilegible text in our server. In order to decypher it, the user must input "
+"the secret phrase. The decryption process is also done in the browser. We do "
+"not store the secret phrase."
+msgstr ""
+"La información sensible se cifra en tu navegador y se guarda como texto "
+"ilegible en nuestro servidor. Para descifrarla, el usuario debe introducir "
+"una contraseña. El proceso de descifrado también ocurre en el navegador. No "
+"guardamos la contraseña, no podemos leer la información almacenada."
+
+#: view.twig:4
+msgid "WARNING"
+msgstr "ATENCIÓN"
+
+#: view.twig:4
+msgid ""
+"Once opened, this message will be deleted from our servers and this link "
+"will become innacessible."
+msgstr ""
+"Una vez abierto, la información será borrada de nuestros servidores y este "
+"enlace se volverá inaccesible."
+
+#: view.twig:6
+msgid ""
+"The content of this message is confidential and intended for a recipient "
+"from a legiptimate communitacion. It is strictly forbidden to share any part "
+"of this message with any third party, without consent from the sender. If "
+"you received this link/url by mistake, please close this page and do not "
+"share the link."
+msgstr ""
+
+#: view.twig:10
+msgid "Open"
+msgstr "Abir"
+
+#: view.twig:14
+msgid "Message"
+msgstr "Mensaje"
+
+#~ msgid "test"
+#~ msgstr "prueba"
