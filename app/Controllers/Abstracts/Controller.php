@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Abstracts;
 
 use Throwable;
 use DI\Container;
@@ -15,7 +15,6 @@ abstract class Controller
      * @var \Interop\Container\ContainerInterface
      */
     protected $container;
-    public $user;
 
 
     /**
@@ -26,7 +25,6 @@ abstract class Controller
     public function __construct(Container $container)
     {
         $this->container = $container;
-        $this->user      = $container->get('user');
     }
 
 
@@ -38,7 +36,7 @@ abstract class Controller
      * @param int $status
      * @return Response
      */
-    public function respond(Response $response, array $data = [], int $status = 200): Response
+    public function return(Response $response, array $data = [], int $status = 200): Response
     {
         $response->getBody()->write(json_encode($data));
         return $response->withHeader('Content-Type', 'application/json')->withStatus($status);
@@ -52,7 +50,7 @@ abstract class Controller
      * @param string $message
      * @return Response
      */
-    protected function respondError(int $status = 500, string $errorCode = '', string $message = ''): Response
+    protected function returnError(int $status = 500, string $errorCode = '', string $message = ''): Response
     {
         $payload = array(
             'error'      => true,
@@ -73,7 +71,7 @@ abstract class Controller
      * @param Throwable $error
      * @return Response
      */
-    protected function respondException(Throwable $error)
+    protected function returnException(Throwable $error)
     {
         $status = (int) $error->getCode();
         $this->container->get('log')->exception($error);
@@ -92,7 +90,7 @@ abstract class Controller
      *
      * @return Response
      */
-    protected function respondForbidden(): Response
+    protected function returnForbidden(): Response
     {
         return $this->returnError(403, 'forbidden', 'Forbidden');
     }
