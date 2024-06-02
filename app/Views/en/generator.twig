@@ -4,18 +4,23 @@
     <form action="" method="POST">
         <p>Paste a password or another senstive information and we will generate a onetime link for you to share securely. Encryption and decryption happens in the browser, we never store plain-text information. The information will be stored for up to 7 days.</p>
 
-        <textarea placeholder="Sensitive information..."></textarea>
+        <textarea id="message" name="message" placeholder="Sensitive information..."></textarea>
+
+        <div class="files">
+            <button class="file--button display" type="button" id="addFiles">📃 Add files</button>
+            <input class="file--field" type="file" id="files" name="files" placeholder="Sensitive files..." multiple>
+        </div>
 
         <p>Leaving the secret phrase field empty will cause a random secret phrase generation which will be included in the generated link.
         </p>
 
-        <input type="text" placeholder="Secret phrase">
+        <input id="passphrase" name="passphrase" type="text" placeholder="Secret phrase">
 
-        <button class="full">🔗 Generate</button>
+        <button id="generate" name="generate" class="full">🔗 Generate</button>
     </form>
 </section>
 
-<section class="box section section--result" style="display:none">
+<section class="box section section--result">
     <p>Your sensitive information has been saved. You can share the following link and once it is opened it will be deleted.</p>
 
     <input type="text" placeholder="https://....">
@@ -45,21 +50,5 @@
         </li>
     </ul>
 
-</section>
-
-<section class="box section section--decrypt" style="display:none">
-    <p><strong>WARNING:</strong> Once opened, this message will be deleted from our servers and this link will become innacessible.</p>
-
-    <p class="legal">The content of this message is confidential and intended for a recipient from a legiptimate communitacion. It is strictly forbidden to share any part of this message with any third party, without consent from the sender. If you received this link/url by mistake, please close this page and do not share the link.</p>
-
-    <form action="" method="POST">
-        <input type="text" placeholder="Pass phrase">
-        <button class="full">🔓 Open</button>
-    </form>
-
-    <aside class="result">
-        <label>Message:</label>
-        <textarea>Hello world</textarea>
-    </aside>
 </section>
 {% endblock %}
