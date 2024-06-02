@@ -6,7 +6,7 @@ use DI\Container;
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Slim\Factory\AppFactory;
 use App\Classes\AppContainer;
-use App\Classes\Log;;
+use App\Classes\Log;
 use App\Classes\Server;
 use App\Utilities\Settings;
 
