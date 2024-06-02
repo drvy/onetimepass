@@ -1,3 +1,4 @@
+const del         = require('del');
 const gulp        = require('gulp');
 const browserSync = require('browser-sync').create();
 const config      = require('./config');
@@ -8,7 +9,6 @@ const plugins     = require('gulp-load-plugins')({
         }
     }
 });
-
 
 gulp.task('build:sass', () => {
     return gulp.src(config.sassPath + '/**/*.scss')
@@ -53,11 +53,9 @@ gulp.task('build:image', () => {
 });
 
 
-gulp.task('clean', function () {
-    return gulp.src([
-            config.destPath
-        ], {read: false, allowEmpty: true})
-    .pipe(plugins.clean());
+gulp.task('clean', function(done) {
+    del.sync([config.destPath + '/**', '!' + config.destPath]);
+    done();
 });
 
 
@@ -70,6 +68,7 @@ gulp.task('watch', function(){
         ],
         proxy: config.devUrl
     });
+
     gulp.watch(config.sassPath + '/**/*.scss', gulp.series('build:sass'));
     gulp.watch(config.jsPath + '/**/*.js', gulp.series('build:javascript'));
     gulp.watch(config.imgPath + '/**/*', gulp.series('build:image'));
