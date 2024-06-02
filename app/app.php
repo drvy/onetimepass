@@ -84,6 +84,7 @@ $container->set('csrf', function () use ($app) {
 });
 $app->add('csrf');
 
+$app->addBodyParsingMiddleware();
 
 // Database
 $capsule = new Capsule();
