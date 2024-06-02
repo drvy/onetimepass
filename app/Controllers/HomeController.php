@@ -2,24 +2,22 @@
 
 namespace App\Controllers;
 
-use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use App\Controllers\Abstracts\Controller;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use App\Controllers\Controller;
 
 class HomeController extends Controller
 {
     /**
-     * Render the home page
+     * Render the default response
      *
      * @param Request $request
      * @param Response $response
-     * @param array $args
-     * @return void
+     * @return Response
      */
-    public function index(Request $request, Response $response, array $args = array())
+    public function index(Request $request, Response $response): Response
     {
-        return $this->render($response, 'generator.twig', [
-            'appName' => $this->container->get('settings')['app']['name']
-        ]);
+        unset($request);
+        return $this->return($response, ['response' => 'Hello world'], 200);
     }
 }
