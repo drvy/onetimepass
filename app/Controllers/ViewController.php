@@ -6,7 +6,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use App\Controllers\Abstracts\Controller;
 
-class HomeController extends Controller
+class ViewController extends Controller
 {
     /**
      * Render the home page
@@ -18,7 +18,7 @@ class HomeController extends Controller
      */
     public function index(Request $request, Response $response, array $args = array())
     {
-        return $this->render($response, 'generator.twig', [
+        return $this->render($response, 'view.twig', [
             'appName' => $this->container->get('settings')['app']['name']
         ]);
     }
