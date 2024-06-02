@@ -1,3 +1,10 @@
 @import 'reset';
 @import 'theme';
 @import 'main';
+
+@import 'modules/inputs';
+
+@import 'parts/header';
+@import 'parts/box';
+@import 'parts/decrypt';
+@import 'parts/files';

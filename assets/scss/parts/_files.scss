@@ -1,0 +1,15 @@
+.files {
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+
+  .file--button,
+  .file--field {
+    display: none;
+
+    &.display {
+      display: block;
+    }
+  }
+}
