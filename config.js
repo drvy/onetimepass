@@ -1,5 +1,5 @@
 module.exports = {
-    "devUrl"  : "https://secrets.loc",
+    "devUrl"  : "https://onetimepass.loc",
     "imgPath" : "./app/Views/assets/img",
     "jsPath"  : "./app/Views/assets/js",
     "sassPath": "./app/Views/assets/scss",
