@@ -3,12 +3,17 @@
 namespace App\Models;
 
 use DateTime;
-use Illuminate\Database\Eloquent\Model;
+use App\Abstracts\Models\Model;
 
 class Message extends Model
 {
-    const CREATED_AT = 'createdAt';
-    const UPDATED_AT = 'updatedAt';
+    public const CREATED_AT = 'created_at';
+    public const UPDATED_AT = 'updated_at';
+
+    protected $table   = 'messages';
+    protected $keyType = 'string';
+
+    protected $fillable = [];
 
 
     public function getCreatedAtAttribute($date)

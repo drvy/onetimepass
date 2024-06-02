@@ -12,7 +12,7 @@ const plugins     = require('gulp-load-plugins')({
 
 gulp.task('build:sass', () => {
     return gulp.src(config.sassPath + '/**/*.scss')
-        .pipe(plugins.sassLint({config: '.sass-lint.yml'}))
+        .pipe(plugins.sassLint({config: 'tests/sass-lint.yml'}))
         .pipe(plugins.sassLint.format())
         .pipe(plugins.sassLint.failOnError())
         .pipe(plugins.sass({
