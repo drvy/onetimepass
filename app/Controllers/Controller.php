@@ -27,6 +27,14 @@ abstract class Controller
     }
 
 
+    /**
+     * Render shortcut
+     *
+     * @param Response $response
+     * @param string $view
+     * @param array $args
+     * @return Response
+     */
     public function render(Response $response, string $view, array $args = array()): Response
     {
         return $this->container->get('view')->render($response, $view, $args);
